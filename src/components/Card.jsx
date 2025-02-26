@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import { useStore } from "hooks";
-import {gsap} from "gsap";
+import { gsap } from "gsap";
 import { memo, useRef } from "react";
 
 export const Card = memo(({ data, isFlipped, onClick }) => {
@@ -11,10 +11,7 @@ export const Card = memo(({ data, isFlipped, onClick }) => {
 
   const { contextSafe } = useGSAP(
     () => {
-      gsap.set(scope.current, {
-        transformPerspective: 600,
-        transformStyle: "preserve-3d",
-      });
+      gsap.set(scope.current, { transformPerspective: 600 });
       gsap.set(".front", { rotationY: 180, filter: "brightness(1)" });
       gsap.set(".back", { filter: "brightness(1)" });
 
@@ -65,9 +62,10 @@ export const Card = memo(({ data, isFlipped, onClick }) => {
       onMouseEnter={cardUp}
       onMouseLeave={cardDown}
       onClick={handleClick}
+      aria-disabled={isDisabled}
       onDragStart={e => e.preventDefault()}
-      className={`shadow-md lg:shadow-xl card aspect-[5/7] cursor-pointer
-      rounded-xs lg:rounded-sm *:rounded-[inherit] outline-0 relative`}>
+      className={`shadow-md lg:shadow-xl card aspect-[5/7] cursor-pointer transform-3d 
+      rounded-xs lg:rounded-sm *:rounded-[inherit] outline-0 relative aria-disabled:cursor-auto`}>
       <img
         src={`/assets/images/${data.image}`}
         className="front face p-1 bg-white w-full h-full absolute"

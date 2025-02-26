@@ -12,5 +12,5 @@ export const createDeck = (data, pairCount) => {
       isFlipped: false,
       isMatched: false,
     }))
-    .sort(() => Math.random() - 0.5);
+    // .sort(() => Math.random() - 0.5);
 };

@@ -6,13 +6,6 @@ body {
   --pattern: url('/assets/images/bg2.png');
 }
 
-/* .cen {
-  justify-content: center; 
-  align-items: center; 
-  justify-items: center; 
-  align-content: center;
-} */
-
 .timer {
   background: linear-gradient(90deg,
       rgba(255, 66, 66, 1) 0%,
@@ -222,27 +215,3 @@ body {
 @utility selected {
   background: conic-gradient(at bottom left, #382933, #3b5249, #519872);
 }
-
-/* 
-@layer components {
-  .board {
-    gap: clamp(.3rem, 1vw, .7rem);
-    @apply p-[1vw] grid-cols-3 sm:grid-cols-4 2xl:grid-cols-6 landscape:grid-cols-6;
-
-    .card {
-      @apply max-h-[10rem] 2xl:max-h-[20vh];
-    }
-  }
-
-  .medium {
-    @apply grid-cols-4 sm:grid-cols-6 lg:grid-cols-8;
-
-    .card {
-      @apply max-h-[14vh] sm:max-h-[16vh] md:max-h-[10vw] xl:max-h-[20vh]
-    }
-  }
-
-  .hard {
-    @apply sm:grid-cols-6 xl:grid-cols-7 landscape:2xl:grid-cols-9;
-  }
-} */

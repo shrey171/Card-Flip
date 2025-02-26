@@ -6,7 +6,7 @@ export const Home = () => {
   const preMadeSettings = settings.slice(0, 4);
 
   return (
-    <div className="w-full h-screen flex justify-center items-center">
+    <div className="w-full h-full flex justify-center items-center">
       <div className="w-full text-gray-200 p-6 rounded-lg">
         <div className="text-center">
           {/* <h1 className="text-4xl font-bold">Flippy</h1> */}
