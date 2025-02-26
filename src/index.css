@@ -3,7 +3,7 @@
 
 body {
   --columns: repeat(1fr, 26);
-  --pattern: url('assets/images/bg2.png');
+  --pattern: url('/assets/images/bg2.png');
 }
 
 /* .cen {

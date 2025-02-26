@@ -6,6 +6,7 @@ import { useEffect } from "react";
 export const Game = () => {
   const difficulty = useStore(state => state.difficulty);
   const settings = useStore(state => state.settings);
+  const gameState = useStore(state => state.gameState);
   const time = settings[difficulty].time;
 
   useEffect(() => {
@@ -17,7 +18,7 @@ export const Game = () => {
   return (
     <>
       <Board />
-      <Timer seconds={time} />
+     {gameState === "playing" && <Timer seconds={time} />}
     </>
   );
 };
