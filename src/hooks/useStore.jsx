@@ -23,7 +23,7 @@ export const useStore = create((set, get) => ({
         0: 70,
         400: 100,
       },
-      image: "src/assets/images/casual.png",
+      image: "/assets/images/casual.png",
     },
     {
       id: 1,
@@ -35,7 +35,7 @@ export const useStore = create((set, get) => ({
         0: 55,
         400: 80,
       },
-      image: "src/assets/images/classic.png",
+      image: "/assets/images/classic.png",
     },
     {
       id: 2,
@@ -47,7 +47,7 @@ export const useStore = create((set, get) => ({
         0: 55,
         400: 65,
       },
-      image: "src/assets/images/challenging.png",
+      image: "/assets/images/challenging.png",
     },
     {
       id: 3,
@@ -59,7 +59,7 @@ export const useStore = create((set, get) => ({
         0: 40,
         400: 50,
       },
-      image: "src/assets/images/cardtrickster.png",
+      image: "/assets/images/cardtrickster.png",
     },
     {
       id: 4,

@@ -69,12 +69,12 @@ export const Card = memo(({ data, isFlipped, onClick }) => {
       className={`shadow-md lg:shadow-xl card aspect-[5/7] cursor-pointer
       rounded-xs lg:rounded-sm *:rounded-[inherit] outline-0 relative`}>
       <img
-        src={`src/assets/images/${data.image}`}
+        src={`/assets/images/${data.image}`}
         className="front face p-1 bg-white w-full h-full absolute"
         alt={data.image}
       />
       <img
-        src="src/assets/images/test.jpg"
+        src="/assets/images/test.jpg"
         className="back face bg-main backface-hidden w-full h-full absolute"
         alt={data.image + " backface"}
       />

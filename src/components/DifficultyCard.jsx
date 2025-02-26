@@ -27,7 +27,7 @@ export const DifficultyCard = ({ image, name, id, pairCount, time }) => {
             <div className="flex items-center gap-1">
               <img
                 className="w-7 invert-100"
-                src="src/assets/images/cards.png"
+                src="/assets/images/cards.png"
                 alt="cards-icon"
               />
               <p className="font-bold">{pairCount}</p>
@@ -35,7 +35,7 @@ export const DifficultyCard = ({ image, name, id, pairCount, time }) => {
             <div className="flex items-center gap-1">
               <img
                 className="w-7 invert-100"
-                src="src/assets/images/time.png"
+                src="/assets/images/time.png"
                 alt="time-icon"
               />
               <p className="font-bold">{time}</p>

@@ -20,7 +20,7 @@ export const DifficultyButton = ({ name, id, time, pairCount }) => {
           <p className="font-bold text-sm">{pairCount}</p>
           <img
             className="w-5 rotate-y-180"
-            src="src/assets/images/cards.png"
+            src="/assets/images/cards.png"
             alt="cards-icon"
           />
         </div>
@@ -28,7 +28,7 @@ export const DifficultyButton = ({ name, id, time, pairCount }) => {
           <p className="font-bold text-sm">{time}</p>
           <img
             className="w-5"
-            src="src/assets/images/time.png"
+            src="/assets/images/time.png"
             alt="time-icon"
           />
         </div>
