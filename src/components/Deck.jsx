@@ -1,4 +1,4 @@
-import data from "assets/data.json";
+import data from "/assets/data.json";
 import { useEffect } from "react";
 import { Card } from "./Card";
 import { useCardFlip, useStore } from "hooks";
