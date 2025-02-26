@@ -3,7 +3,7 @@ import { Game } from "./components/Game";
 import { Home } from "components/Home";
 import { useLayoutEffect } from "react";
 import Flip from "gsap/Flip";
-import gsap from "gsap";
+import { gsap } from "gsap";
 
 export const App = () => {
   const gameState = useStore(state => state.gameState);

@@ -1,5 +1,5 @@
 import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import {gsap} from "gsap";
 import { Flip } from "gsap/Flip";
 import { useGrid, useStore } from "hooks";
 import { Deck } from "./Deck";
