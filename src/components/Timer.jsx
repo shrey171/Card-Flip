@@ -1,11 +1,11 @@
 import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { gsap } from "gsap";
 import { useRef } from "react";
 import { useStore } from "hooks";
 
 export const Timer = ({ seconds }) => {
   const scope = useRef(null);
-  const setGameState = useStore((state) => state.setGameState);
+  const setGameState = useStore(state => state.setGameState);
 
   useGSAP(
     () => {
@@ -14,7 +14,7 @@ export const Timer = ({ seconds }) => {
         clipPath: "inset(0% 0% 0% 0%)",
         duration: seconds,
         ease: "none",
-        onComplete: () => setGameState('lose'),
+        onComplete: () => setGameState("lose"),
       });
     },
     { scope }

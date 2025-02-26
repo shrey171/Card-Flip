@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import { useStore } from "hooks";
-import gsap from "gsap";
+import {gsap} from "gsap";
 import { memo, useRef } from "react";
 
 export const Card = memo(({ data, isFlipped, onClick }) => {

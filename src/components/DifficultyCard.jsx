@@ -12,7 +12,7 @@ export const DifficultyCard = ({ image, name, id, pairCount, time }) => {
   return (
     <button
       onClick={onClick}
-      className={`difficulty-card ${name} w-96 aspect-[2/3] cursor-pointer relative z-0 group`}>
+      className={`difficulty-card ${name} w-[20%] aspect-[2/3] cursor-pointer relative z-0 group`}>
       <div className="image-container flex flex-col justify-center items-center w-full h-full">
         <p className="difficulty-name text-black absolute top-[12%] text-3xl capitalize font-bold mb-3">
           {name}

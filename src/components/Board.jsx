@@ -1,5 +1,5 @@
 import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import {gsap} from "gsap";
 import { Flip } from "gsap/Flip";
 import { useGrid, useStore } from "hooks";
 import { Deck } from "./Deck";
@@ -15,10 +15,11 @@ export const Board = () => {
 
   useGSAP(
     () => {
+      return;
       if (gameState !== "animating-cards") return;
       const cards = gsap.utils.toArray(".card");
       const { offsetWidth, offsetHeight } = cards[0];
-      // TODO Fix the fucking deck sitting at the top-left corner on load animation
+      // TODO Fix the deck sitting at the top-left corner on load animation
       gsap.set(".stack", {
         width: offsetWidth,
         height: offsetHeight,

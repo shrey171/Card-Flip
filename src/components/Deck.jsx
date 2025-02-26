@@ -15,7 +15,7 @@ export const Deck = () => {
 
   useEffect(() => {
     setCards(createDeck(data, pairCount));
-    setGameState("animating-cards");
+    setGameState("playing");
   }, []);
 
   return (

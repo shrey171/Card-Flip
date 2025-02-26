@@ -13,7 +13,7 @@ export const Home = () => {
         </div>
         <div className="flex flex-col items-center mt-6">
           {/* <p className="text-lg">Choose Difficulty</p> */}
-          <div className="flex justify-around items-center gap-12 mt-2">
+          <div className="flex justify-center items-center gap-12 w-full mt-2">
             {preMadeSettings.map(data => (
               <DifficultyCard key={data.id} {...data} />
             ))}
