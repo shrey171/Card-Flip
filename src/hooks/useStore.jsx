@@ -1,5 +1,14 @@
 import { create } from "zustand";
 
+const validGameStates = [
+  "setup",
+  "creating-deck",
+  "animating-cards",
+  "playing",
+  "win",
+  "lose",
+];
+
 export const useStore = create((set, get) => ({
   cards: [],
   difficulty: 1,
@@ -14,7 +23,7 @@ export const useStore = create((set, get) => ({
         0: 70,
         400: 100,
       },
-      image: 'src/assets/images/casual.png'
+      image: "src/assets/images/casual.png",
     },
     {
       id: 1,
@@ -26,7 +35,7 @@ export const useStore = create((set, get) => ({
         0: 55,
         400: 80,
       },
-      image: 'src/assets/images/classic.png'
+      image: "src/assets/images/classic.png",
     },
     {
       id: 2,
@@ -38,7 +47,7 @@ export const useStore = create((set, get) => ({
         0: 55,
         400: 65,
       },
-      image: 'src/assets/images/challenging.png'
+      image: "src/assets/images/challenging.png",
     },
     {
       id: 3,
@@ -50,7 +59,7 @@ export const useStore = create((set, get) => ({
         0: 40,
         400: 50,
       },
-      image: 'src/assets/images/cardtrickster.png'
+      image: "src/assets/images/cardtrickster.png",
     },
     {
       id: 4,
@@ -72,9 +81,13 @@ export const useStore = create((set, get) => ({
         card.id === id ? { ...card, isMatched: true } : card
       );
       const isWon = cards.every(card => card.isMatched);
-      return { cards, gameState: isWon ? "win" : "idle" };
+      const gameState = isWon ? "win" : "playing";
+      return { cards, gameState };
     }),
   setCards: cards => set({ cards }),
   setDifficulty: difficulty => set({ difficulty }),
-  setGameState: gameState => set({ gameState }),
+  setGameState: gameState => {
+    if (validGameStates.includes(gameState)) set({ gameState });
+    else throw new Error(`Invalid game state: ${gameState}`);
+  },
 }));

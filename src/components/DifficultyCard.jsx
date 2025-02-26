@@ -6,7 +6,7 @@ export const DifficultyCard = ({ image, name, id, pairCount, time }) => {
 
   const onClick = () => {
     setDifficulty(id);
-    setGameState("loading");
+    setGameState("creating-deck");
   };
 
   return (

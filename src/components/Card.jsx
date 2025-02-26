@@ -1,11 +1,13 @@
-import { memo, useRef } from "react";
-import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useStore } from "hooks";
+import gsap from "gsap";
+import { memo, useRef } from "react";
 
 export const Card = memo(({ data, isFlipped, onClick }) => {
   const scope = useRef(null);
   const liftCard = useRef(null);
-  const isDisabled = isFlipped || data.isMatched;
+  const gameState = useStore(state => state.gameState);
+  const isDisabled = isFlipped || data.isMatched || gameState !== "playing";
 
   const { contextSafe } = useGSAP(
     () => {

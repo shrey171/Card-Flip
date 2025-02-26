@@ -10,15 +10,12 @@ export const Deck = () => {
   const difficulty = useStore(state => state.difficulty);
   const settings = useStore(state => state.settings);
   const setGameState = useStore(state => state.setGameState);
-  const { flippedCards, handleFlip } = useCardFlip();
+  const { getIsFlipped, handleFlip } = useCardFlip();
   const { pairCount } = settings[difficulty];
-
-  const getIsFlipped = card =>
-    flippedCards.some(c => c.instanceId === card.instanceId);
 
   useEffect(() => {
     setCards(createDeck(data, pairCount));
-    setGameState("playing");
+    setGameState("animating-cards");
   }, []);
 
   return (

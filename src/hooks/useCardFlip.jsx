@@ -20,5 +20,8 @@ export const useCardFlip = () => {
     }, 600);
   };
 
-  return { flippedCards, handleFlip };
+  const getIsFlipped = card =>
+    flippedCards.some(c => c.instanceId === card.instanceId);
+
+  return { flippedCards, getIsFlipped, handleFlip };
 };
