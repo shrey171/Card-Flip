@@ -12,8 +12,10 @@ export const App = () => {
 
   if (activeGameStates.includes(gameState)) content = <Game />;
   else if (gameState === "setup") content = <Home />;
-  else if (gameState === "win") content = <div>You Win</div>;
-  else if (gameState === "lose") content = <div>Game Over</div>;
+  else if (gameState === "win")
+    content = <div className="text-3xl text-white">You Win</div>;
+  else if (gameState === "lose")
+    content = <div className="text-3xl text-white">Game Over</div>;
 
   useLayoutEffect(() => {
     gsap.registerPlugin(Flip);
