@@ -8,13 +8,11 @@ export const useCardFlip = () => {
 
   const handleFlip = card => {
     if (card.isMatched || disableClick) return;
-    const crntFlippedId = flippedCards[0]?.id;
     setFlippedCards(prev => [...prev, card]);
-    if (!crntFlippedId) return;
-    // Prevent spamming by disabling clicks if cards don't match
-    setDisableClick(true);
+    if (flippedCards.length === 0) return;    
+    setDisableClick(true); // Prevent spamming by disabling clicks if cards don't match
     setTimeout(() => {
-      if (crntFlippedId === card.id) matchCards(card.id);
+      if (flippedCards[0].id === card.id) matchCards(card.id);
       setFlippedCards([]);
       setDisableClick(false);
     }, 600);

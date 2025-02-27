@@ -18,7 +18,7 @@ export const DifficultyCard = ({ image, name, id, pairCount, time }) => {
           {name}
         </p>
         <img
-          className="difficulty-image w-6/12 max-w-36 grayscale-100 transition-all duration-400 group-hover:grayscale-0"
+          className="difficulty-image w-6/12 max-w-36 transition-all duration-400 lg:grayscale-100 group-hover:grayscale-0"
           src={image}
           alt={name + "-image"}
         />
