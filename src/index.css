@@ -20,6 +20,7 @@ body {
 }
 
 .image-container {
+  color: #000!important;
   /* bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-[#f9f9f9] via-[#bcbab8] to-[#9d8f8f] */
   background-image: conic-gradient(at 0% 0%, #f9f9f9 0%, #bcbab8 50%, #9d8f8f 100%);
 }
@@ -66,24 +67,20 @@ body {
   }
 }
 
-/*  absolute top-0 left-0 [--breadth:0.5rem] w-[calc(100%+var(--breadth)*2)] h-[calc(100%+var(--breadth)*2] -translate-x-(--breadth) -translate-y-(--breadth) -z-10 *:bg-white */
-
 .difficulty-card-border {
   --hover-length: max(3rem, 3vw, 5vh);
   --hover-breadth: .5rem;
   --breadth: 0.1rem;
-  /* --length: calc(100% + (var(--breadth)*2)); */
   --length: 100%;
   width: var(--length);
   height: var(--length);
-  /* translate: calc(var(--breadth)*-1) calc(var(--breadth)*-1); */
   position: absolute;
   top: 0;
   left: 0;
   z-index: 10;
 
   &>div {
-    background: white;
+    background: hsla(0, 0%, 60%);
     position: absolute;
     transition: all .4s ease-out;
   }
