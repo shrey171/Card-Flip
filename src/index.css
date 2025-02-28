@@ -4,6 +4,7 @@
 body {
   --columns: repeat(1fr, 26);
   --pattern: url('/assets/images/bg2.png');
+  background-image: var(--pattern);
 }
 
 .timer {
@@ -20,7 +21,7 @@ body {
 }
 
 .image-container {
-  color: #000!important;
+  color: #000 !important;
   /* bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-[#f9f9f9] via-[#bcbab8] to-[#9d8f8f] */
   background-image: conic-gradient(at 0% 0%, #f9f9f9 0%, #bcbab8 50%, #9d8f8f 100%);
 }
@@ -80,7 +81,7 @@ body {
   z-index: 10;
 
   &>div {
-    background: hsla(0, 0%, 60%);
+    background: hsla(0, 0%, 80%);
     position: absolute;
     transition: all .4s ease-out;
   }

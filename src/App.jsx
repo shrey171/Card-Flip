@@ -22,7 +22,7 @@ export const App = () => {
   }, []);
 
   return (
-    <main className="bg-(image:--pattern) bg-no-repeat bg-cover h-screen">
+    <main className="bg-(image:--pattern) bg-center bg-no-repeat bg-cover h-screen overflow-hidden">
       {content}
     </main>
   );

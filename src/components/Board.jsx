@@ -16,7 +16,7 @@ export const Board = () => {
     () => {
       if (gameState !== "animating-cards") return;
       const cards = gsap.utils.toArray(".card");
-      const stack = gsap.utils.toArray(".stack")[0]; // TODO Hide the deck's overflow
+      const stack = gsap.utils.toArray(".stack")[0];
       gsap.set(".stack", {
         width: cards[0].offsetWidth,
         height: cards[0].offsetHeight,
@@ -44,9 +44,9 @@ export const Board = () => {
   return (
     <div
       ref={ref}
-      className="grid gap-1 p-1 content-center lg:gap-2 xl:w-9/12 h-screen mx-auto">
+      className="grid gap-1 p-1 content-center lg:gap-2 xl:w-9/12 h-full mx-auto">
       <Deck />
-      <div className="stack absolute top-full left-6/12 -translate-x-6/12 *:absolute *:top-0 *:left-0"></div>
+      <div className="stack absolute bottom-2 left-6/12 -translate-x-6/12 *:absolute *:top-0 *:left-0 *:w-full *:shadow-transparent"></div>
     </div>
   );
 };
