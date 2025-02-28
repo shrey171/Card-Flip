@@ -1,52 +1,25 @@
-import { useGSAP } from "@gsap/react";
 import { useStore } from "hooks";
-import { gsap } from "gsap";
 import { memo, useRef } from "react";
+import { useCardAnimations } from "hooks";
 
 export const Card = memo(({ data, isFlipped, onClick }) => {
   const scope = useRef(null);
-  const liftCard = useRef(null);
   const gameState = useStore(state => state.gameState);
+  const { rotateCard, liftCardTl, discardTl } = useCardAnimations({ scope });
   const isDisabled = isFlipped || data.isMatched || gameState !== "playing";
-
-  const { contextSafe } = useGSAP(
-    () => {
-      gsap.set(scope.current, { transformPerspective: 600 });
-      gsap.set(".front", { rotationY: 180, filter: "brightness(1)" });
-      gsap.set(".back", { filter: "brightness(1)" });
-
-      liftCard.current = gsap
-        .timeline({ paused: true })
-        .to(scope.current, { y: -10, z: 20, zIndex: 10, duration: 0.15 })
-        .to(".back", { filter: "brightness(.85)", duration: 0.15 }, "<");
-    },
-    { scope }
-  );
 
   const cardUp = () => {
     if (isDisabled) return;
-    liftCard.current.restart();
+    liftCardTl.restart();
   };
 
   const cardDown = () => {
     if (isDisabled) return;
-    liftCard.current.reverse();
+    liftCardTl.reverse();
   };
 
-  const flashCard = contextSafe(() => {
-    gsap.to(".front", {
-      filter: "brightness(0.7)",
-      duration: 0.2,
-    });
-  });
-
-  const rotateCard = contextSafe(
-    rotationY =>
-      scope.current && gsap.to(scope.current, { rotationY, duration: 0.4 })
-  );
-
   if (isFlipped) rotateCard(-180);
-  else if (data.isMatched) flashCard();
+  else if (data.isMatched) discardTl.play();
   else rotateCard(0);
 
   const handleClick = e => {
