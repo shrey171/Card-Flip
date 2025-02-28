@@ -7,15 +7,6 @@ import { gsap } from "gsap";
 
 export const App = () => {
   const gameState = useStore(state => state.gameState);
-  let content;
-  const activeGameStates = ["creating-deck", "animating-cards", "playing"];
-
-  if (activeGameStates.includes(gameState)) content = <Game />;
-  else if (gameState === "setup") content = <Home />;
-  else if (gameState === "win")
-    content = <div className="text-3xl text-white">You Win</div>;
-  else if (gameState === "lose")
-    content = <div className="text-3xl text-white">Game Over</div>;
 
   useLayoutEffect(() => {
     gsap.registerPlugin(Flip);
@@ -23,7 +14,7 @@ export const App = () => {
 
   return (
     <main className="bg-(image:--pattern) bg-center bg-no-repeat bg-cover h-screen overflow-hidden">
-      {content}
+      {gameState === "setup" ? <Home /> : <Game />}
     </main>
   );
 };
