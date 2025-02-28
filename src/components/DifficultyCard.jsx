@@ -12,9 +12,9 @@ export const DifficultyCard = ({ image, name, id, pairCount, time }) => {
   return (
     <button
       onClick={onClick}
-      className={`difficulty-card ${name} w-[20%] aspect-[2/3] cursor-pointer relative z-0 group`}>
-      <div className="image-container flex flex-col justify-center items-center w-full h-full">
-        <p className="difficulty-name text-black absolute top-[12%] text-3xl capitalize font-bold mb-3">
+      className={`difficulty-card ${name} text-white bg-white/10 hover:bg-white/20 w-[20%] aspect-[2/3] cursor-pointer relative z-0 group`}>
+      <div className=" flex flex-col justify-center items-center w-full h-full">
+        <p className="difficulty-name absolute top-[12%] text-3xl capitalize font-bold mb-3">
           {name}
         </p>
         <img
@@ -22,7 +22,7 @@ export const DifficultyCard = ({ image, name, id, pairCount, time }) => {
           src={image}
           alt={name + "-image"}
         />
-        <div className="absolute bottom-1/12 text-black w-full">
+        <div className="absolute bottom-1/12 w-full">
           <div className="flex justify-center gap-5 w-full">
             <div className="flex items-center gap-1">
               <img
