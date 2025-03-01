@@ -1,5 +1,5 @@
 import { useGSAP } from "@gsap/react";
-import { gsap } from "gsap";
+import { gsap, Power2 } from "gsap";
 import { useRef } from "react";
 
 export const useCardAnimations = ({ scope }) => {
@@ -11,6 +11,7 @@ export const useCardAnimations = ({ scope }) => {
       gsap.set(scope.current, { transformPerspective: 600 });
       gsap.set(".front", { rotationY: 180, filter: "brightness(1)" });
       gsap.set(".back", { filter: "brightness(1)" });
+      let target, duration, x, y;
 
       // Card hover timeline
       liftCardTl.current = gsap
@@ -19,24 +20,24 @@ export const useCardAnimations = ({ scope }) => {
         .to(".back", { filter: "brightness(.85)", duration: 0.15 }, "<");
 
       // Discard animation timeline
-      const target = scope.current;
-      const duration = 0.7;
+      target = scope.current;
+      duration = 0.7;
       const upDuration = 0.3;
       const rangeX = Math.max(window.innerWidth / 3, 300);
       const rangeY = window.innerHeight / 3;
-      const x = gsap.utils.random(-rangeX, rangeX);
-      const y = gsap.utils.random(-200, -rangeY);
+      x = Power2.easeOut(Math.random()) * rangeX;
+      y = gsap.utils.random(-200, -rangeY);
+      const reversedRotation = Math.random() < 0.5;
+      const reversedX = Math.random() < 0.5;
+      if (reversedX) x = -x;
       discardTl.current = gsap
-        .timeline({
-          paused: true,
-          onStart: () => {
-            // const front = scope.current.querySelector(".front");
-            // const clone = front.cloneNode(true);
-            // scope.current.appendChild(clone);
-            // gsap.set(clone, { filter: "brightness(0.6)" });
-          },
+        .timeline({ paused: true })
+        .to(target, {
+          rotate: 360,
+          reversed: reversedRotation,
+          duration,
+          ease: "none",
         })
-        .to(target, { rotate: 360, duration, ease: "none" })
         .to(target, { x, duration, ease: "power1.out" }, "<")
         .to(target, { y, duration: upDuration, ease: "power2.out" }, "<")
         .to(
