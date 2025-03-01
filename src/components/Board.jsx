@@ -16,14 +16,19 @@ export const Board = () => {
     () => {
       if (gameState !== "animating-cards") return;
       const cards = gsap.utils.toArray(".card");
-      const stack = gsap.utils.toArray(".stack")[0];
+      const stack = gsap.utils.toArray(".stack")[0]
       gsap.set(".stack", {
         width: cards[0].offsetWidth,
         height: cards[0].offsetHeight,
       });
       const state = Flip.getState(cards);
       cards.map(card => stack.appendChild(card));
-
+      gsap.to(cards, {
+        x: idx => gsap.utils.interpolate(-20, 0, idx / cards.length),
+        y: idx => gsap.utils.interpolate(-20, 0, idx / cards.length),
+        z: idx => gsap.utils.interpolate(1, 0, idx / cards.length),
+        duration: 0.1,
+      });
       Flip.to(state, {
         stagger: { amount: 1 + difficulty / 2 },
         ease: "power2.out",
@@ -46,7 +51,7 @@ export const Board = () => {
       ref={ref}
       className="grid gap-1 p-1 content-center lg:gap-2 xl:w-9/12 h-full mx-auto">
       <Deck />
-      <div className="stack absolute bottom-2 left-6/12 -translate-x-6/12 *:absolute *:top-0 *:left-0 *:w-full *:shadow-transparent"></div>
+      <div className="stack absolute bottom-6 left-6/12 transform-3d -translate-x-6/12 *:border *:border-black/20 *:absolute *:w-full *:shadow-transparent"></div>
     </div>
   );
 };
