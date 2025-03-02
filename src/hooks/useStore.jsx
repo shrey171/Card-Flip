@@ -80,6 +80,7 @@ export const useStore = create((set, get) => ({
       const cards = state.cards.map(card =>
         card.id === id ? { ...card, isMatched: true } : card
       );
+      if (get().gameState !== "playing") return { cards };
       const isWon = cards.every(card => card.isMatched);
       const gameState = isWon ? "win" : "playing";
       return { cards, gameState };
