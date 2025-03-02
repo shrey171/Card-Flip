@@ -55,19 +55,30 @@ export const useCardAnimations = ({ scope }) => {
 
   // Card click tween
   const rotateCard = contextSafe(
-    (rotationY, overwrite) =>
-      scope.current && gsap.to(scope.current, { rotationY, overwrite, duration: 0.4 })
+    rotationY =>
+      scope.current && gsap.to(scope.current, { rotationY, duration: 0.4 })
   );
 
   const gameLose = contextSafe(() => {
-    rotateCard(-180, true);
-    gsap.to(".front", { filter: "brightness(.5)", overwrite: true, delay: 0.5 });
+    gsap.to(scope.current, {
+      rotationY: -180,
+      y: 0,
+      z: 0,
+      overwrite: true,
+      duration: 0.3,
+    });
+    gsap.to(".back", { opacity: 0, duration: 0.1 });    
+    gsap.to(".front", {
+      filter: "brightness(.5)",
+      overwrite: true,
+      delay: 0.2,
+    });
   });
 
   return {
     liftCardTl: liftCardTl.current,
     discardTl: discardTl.current,
     rotateCard,
-    gameLose
+    gameLose,
   };
 };
