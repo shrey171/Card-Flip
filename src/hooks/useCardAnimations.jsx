@@ -9,7 +9,7 @@ export const useCardAnimations = ({ scope }) => {
   const { contextSafe } = useGSAP(
     () => {
       gsap.set(scope.current, { transformPerspective: 600 });
-      gsap.set(".front", { rotationY: 180, filter: "brightness(1)" });
+      gsap.set(".front", { rotationY: 180, filter: "brightness(0.9) grayscale(0)" });
       gsap.set(".back", { filter: "brightness(1)" });
       let target, duration, x, y;
 
@@ -69,7 +69,7 @@ export const useCardAnimations = ({ scope }) => {
     });
     gsap.to(".back", { opacity: 0, duration: 0.1 });    
     gsap.to(".front", {
-      filter: "brightness(.5)",
+      filter: "brightness(.5) grayscale(1)",
       overwrite: true,
       delay: 0.2,
     });
