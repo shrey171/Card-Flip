@@ -26,7 +26,7 @@ export const DifficultyCard = ({ image, name, id, pairCount, time }) => {
           <div className="flex justify-center gap-5 w-full">
             <div className="flex items-center gap-1">
               <img
-                className="w-7 invert-100"
+                className="w-7 invert-10"
                 src="/assets/images/cards.png"
                 alt="cards-icon"
               />
@@ -34,7 +34,7 @@ export const DifficultyCard = ({ image, name, id, pairCount, time }) => {
             </div>
             <div className="flex items-center gap-1">
               <img
-                className="w-7 invert-100"
+                className="w-7 invert-10"
                 src="/assets/images/time.png"
                 alt="time-icon"
               />

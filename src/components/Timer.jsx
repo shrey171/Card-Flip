@@ -5,12 +5,16 @@ import { useStore } from "hooks";
 
 export const Timer = ({ seconds }) => {
   const scope = useRef(null);
+  const timeline = useRef(null);
   const setGameState = useStore(state => state.setGameState);
+  const gameState = useStore(state => state.gameState);
+  if (gameState === 'playing') timeline.current?.play();
 
   useGSAP(
     () => {
       gsap.set(scope.current, { clipPath: "inset(0% 100% 0% 100%)" });
-      gsap.to(scope.current, {
+      timeline.current = gsap.timeline({ paused: true });
+      timeline.current.to(scope.current, {
         clipPath: "inset(0% 0% 0% 0%)",
         duration: seconds,
         ease: "none",

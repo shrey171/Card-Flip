@@ -24,18 +24,31 @@ export const Board = () => {
       const state = Flip.getState(cards);
       cards.map(card => stack.appendChild(card));
 
-      Flip.to(state, {
-        stagger: { amount: 1 + difficulty / 2 },
-        ease: "power2.out",
-        duration: 0.15,
-        onComplete: () => {
-          cards.map(card => ref.current.appendChild(card));
-          stack.remove();
-          const perspective = gsap.getProperty(".card", "transformPerspective");
-          gsap.set(cards, { clearProps: "all" });
-          gsap.set(cards, { transformPerspective: perspective });
-          setGameState("playing");
-        },
+      const animateFLIP = () => {
+        Flip.to(state, {
+          stagger: { amount: 1 + difficulty / 2 },
+          ease: "power2.out",
+          duration: 0.15,
+          onComplete: () => {
+            cards.map(card => ref.current.appendChild(card));
+            stack.remove();
+            const perspective = gsap.getProperty(
+              ".card",
+              "transformPerspective"
+            );
+            gsap.set(cards, { clearProps: "all" });
+            gsap.set(cards, { transformPerspective: perspective });
+            setGameState("playing");
+          },
+        });
+      };
+
+      gsap.to(cards, {
+        x: idx => idx / 2,
+        y: idx => idx / 2,
+        z: idx => gsap.utils.interpolate(1, 0, idx / cards.length),
+        duration: 0.1,
+        onComplete: animateFLIP,
       });
     },
     { scope: ref, dependencies: [gameState] }
@@ -46,7 +59,7 @@ export const Board = () => {
       ref={ref}
       className="grid gap-1 p-1 content-center lg:gap-2 xl:w-9/12 h-full mx-auto">
       <Deck />
-      <div className="stack absolute bottom-2 left-6/12 -translate-x-6/12 *:absolute *:top-0 *:left-0 *:w-full *:shadow-transparent"></div>
+      <div className="stack absolute bottom-12 left-6/12 transform-3d -translate-x-6/12 *:border *:border-black/20 *:absolute *:w-full *:shadow-transparent"></div>
     </div>
   );
 };
