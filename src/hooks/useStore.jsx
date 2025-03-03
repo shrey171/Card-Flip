@@ -91,4 +91,5 @@ export const useStore = create((set, get) => ({
     if (validGameStates.includes(gameState)) set({ gameState });
     else throw new Error(`Invalid game state: ${gameState}`);
   },
+  restart: () => set({ cards: [], gameState: "setup" }),
 }));
