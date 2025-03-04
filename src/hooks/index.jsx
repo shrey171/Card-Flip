@@ -1,4 +1,4 @@
 export * from './useCardAnimations'
-export * from './useCardFlip'
+export * from './useCardLogic'
 export * from './useGrid'
 export * from './useStore'

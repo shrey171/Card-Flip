@@ -46,7 +46,7 @@ export const Board = () => {
       gsap.to(cards, {
         x: idx => idx / 2,
         y: idx => idx / 2,
-        z: idx => gsap.utils.interpolate(1, 0, idx / cards.length),
+        z: idx => 1 - idx / cards.length,
         duration: 0.1,
         onComplete: animateFLIP,
       });

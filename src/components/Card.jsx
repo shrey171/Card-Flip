@@ -5,10 +5,9 @@ import { useCardAnimations } from "hooks";
 export const Card = memo(({ data, isFlipped, onClick }) => {
   const scope = useRef(null);
   const gameState = useStore(state => state.gameState);
-  const { rotateCard, gameLose, liftCardTl, discardTl } = useCardAnimations({
-    scope,
-  });
+  const animations = useCardAnimations({ scope });
   const isDisabled = isFlipped || data.isMatched || gameState !== "playing";
+  const { rotateCard, gameLose, liftCardTl, discardTl } = animations;
 
   const cardUp = () => {
     if (isDisabled) return;

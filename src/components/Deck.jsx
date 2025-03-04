@@ -1,8 +1,7 @@
 import data from "assets/data.json";
+import { useCardLogic, useStore } from "hooks";
 import { useEffect } from "react";
 import { Card } from "./Card";
-import { useCardFlip, useStore } from "hooks";
-import { createDeck } from "src/util";
 
 export const Deck = () => {
   const cards = useStore(state => state.cards);
@@ -10,7 +9,7 @@ export const Deck = () => {
   const difficulty = useStore(state => state.difficulty);
   const settings = useStore(state => state.settings);
   const setGameState = useStore(state => state.setGameState);
-  const { getIsFlipped, handleFlip } = useCardFlip();
+  const { createDeck, getIsFlipped, handleFlip } = useCardLogic();
   const { pairCount } = settings[difficulty];
 
   useEffect(() => {

@@ -18,14 +18,12 @@ export const useGrid = ({
   ref: givenRef,
   maxHeight: givenMaxHeight = 0,
   minWidth: givenMinWidth = 0,
-  minRows = 0,
+  minRows = 1,
 }) => {
   const ref = givenRef || useRef(null);
   const resizeTimeoutRef = useRef(null);
-  console.log("useGrid");
 
-  const create = useCallback(() => {
-    console.log("useGrid ~ create");
+  const createGrid = useCallback(() => {
     const gap = parseFloat(window.getComputedStyle(ref.current).gap) || 0;
     const gridHeight = ref.current.offsetHeight;
     const gridWidth = ref.current.offsetWidth;
@@ -36,7 +34,6 @@ export const useGrid = ({
         minWidth = gridWidth >= Number(key) ? givenMinWidth[key] : minWidth;
       });
     }
-
     const maxColumns = Math.floor(gridWidth / (minWidth + gap));
     const factors = getFactors(cellCount);
     let columns = factors.find(factor => factor <= maxColumns);
@@ -52,10 +49,15 @@ export const useGrid = ({
       columns = Math.ceil(cellCount / rows);
     }
 
-    let maxHeight = givenMaxHeight || Math.floor(gridHeight / rows) - gap;
+    const maxHeight = givenMaxHeight || Math.floor(gridHeight / rows) - gap;
     ref.current.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
     ref.current.style.setProperty("--cell-min-width", `${minWidth}px`);
     ref.current.style.setProperty("--cell-max-height", `${maxHeight}px`);
+    ref.current.classList.add(
+      "grid",
+      "*:min-w-(--cell-min-width)",
+      "*:max-h-(--cell-max-height)"
+    );
   }, [cellCount, givenMinWidth, minRows]);
 
   useEffect(() => {
@@ -63,10 +65,9 @@ export const useGrid = ({
       if (resizeTimeoutRef.current) {
         clearTimeout(resizeTimeoutRef.current);
       }
-      resizeTimeoutRef.current = setTimeout(create, 100);
+      resizeTimeoutRef.current = setTimeout(createGrid, 100);
     };
-
-    create();
+    createGrid();
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -74,7 +75,7 @@ export const useGrid = ({
         clearTimeout(resizeTimeoutRef.current);
       }
     };
-  }, [create]);
+  }, [createGrid]);
 
-  return { create, ref };
+  return { createGrid, ref };
 };

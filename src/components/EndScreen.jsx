@@ -15,7 +15,7 @@ export const EndScreen = () => {
   useGSAP(
     () => {
       const count = 20;
-      const range = 0.5;
+      const range = 0.6;
       const textElement = scope.current.firstElementChild;
       const fontFamilies = [
         "Bubblegum Sans",
@@ -68,7 +68,7 @@ export const EndScreen = () => {
         const decY = offsetY / (textElement.offsetHeight / 2);
 
         const x = decX * range;
-        const y = decY * range;
+        const y = decY * range * 1.5;
 
         gsap.to(".text", {
           x: idx => idx * x,

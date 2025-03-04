@@ -12,9 +12,9 @@ export const DifficultyCard = ({ image, name, id, pairCount, time }) => {
   return (
     <button
       onClick={onClick}
-      className={`difficulty-card ${name} text-white bg-white/10 hover:bg-white/20 w-[20%] aspect-[2/3] cursor-pointer relative z-0 group`}>
-      <div className=" flex flex-col justify-center items-center w-full h-full">
-        <p className="difficulty-name absolute top-[12%] text-3xl capitalize font-bold mb-3">
+      className={`difficulty-card ${name} text-white bg-white/10 hover:bg-white/20 w-full aspect-[2/3] cursor-pointer relative z-0 group`}>
+      <div className="flex flex-col justify-center items-center w-full h-full">
+        <p className="difficulty-name absolute top-[12%] text-lg md:text-xl lg:text-2xl 2xl:text-4xl capitalize font-bold mb-3">
           {name}
         </p>
         <img
@@ -26,19 +26,19 @@ export const DifficultyCard = ({ image, name, id, pairCount, time }) => {
           <div className="flex justify-center gap-5 w-full">
             <div className="flex items-center gap-1">
               <img
-                className="w-7 invert-10"
+                className="w-4 md:w-5 lg:w-7 invert-10"
                 src="/assets/images/cards.png"
                 alt="cards-icon"
               />
-              <p className="font-bold">{pairCount}</p>
+              <p className="font-semibold text-xs sm:text-base">{pairCount}</p>
             </div>
             <div className="flex items-center gap-1">
               <img
-                className="w-7 invert-10"
+                className="w-4 md:w-5 lg:w-7 invert-10"
                 src="/assets/images/time.png"
                 alt="time-icon"
               />
-              <p className="font-bold">{time}</p>
+              <p className="font-semibold text-xs sm:text-base">{time}</p>
             </div>
           </div>
         </div>
