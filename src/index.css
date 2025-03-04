@@ -19,7 +19,7 @@ body {
   background-image: conic-gradient(at 0% 0%, #f9f9f9 0%, #bcbab8 50%, #9d8f8f 100%);
 }
 
-.difficulty-card:hover .image-container {
+.btn:hover .image-container {
   background-image: radial-gradient(circle at center, #f9f9f9, #bcbab8, #9d8f8f);
 } */
 
@@ -61,7 +61,7 @@ body {
   }
 }
 
-.difficulty-card-border {
+.btn-border {
   --hover-length: max(3rem, 3vw, 5vh);
   --hover-breadth: .5rem;
   --breadth: 0.1rem;
@@ -76,11 +76,11 @@ body {
   &>div {
     background: hsla(0, 0%, 80%);
     position: absolute;
-    transition: all .4s ease-out;
+    transition: all .3s ease-out;
   }
 
   .side-border {
-    transition-delay: 0.2s;
+    transition-delay: 0.1s;
     transition-duration: 0.2s;
   }
 
@@ -151,7 +151,7 @@ body {
   }
 }
 
-.difficulty-card:hover .difficulty-card-border {
+.btn:hover .btn-border {
 
   .top,
   .bottom {
