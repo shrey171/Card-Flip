@@ -1,22 +1,21 @@
 import { useStore, useGrid } from "hooks";
 import { DifficultyCard } from "./DifficultyCard";
-import { useEffect } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 export const Home = () => {
   const settings = useStore(state => state.settings);
   const preMadeSettings = settings.slice(0, 4);
   const { ref } = useGrid({ cellCount: 4, minWidth: 150 });
 
-  useEffect(() => {
-    const onLoad = () => {
-      ref.current.style.visibility = "visible";
-      // Preloading card's backface image
+  useGSAP(
+    () => {
       const img = new Image();
       img.src = "/assets/images/test.jpg";
-    };
-    window.addEventListener("load", onLoad);
-    return () => window.removeEventListener("load", onLoad);
-  }, []);
+      ref.current && gsap.to(ref.current, { autoAlpha: 1 });
+    },
+    { scope: ref }
+  );
 
   return (
     <div
