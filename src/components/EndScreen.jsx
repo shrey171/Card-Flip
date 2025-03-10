@@ -24,8 +24,8 @@ export const EndScreen = () => {
         "Ephesis",
       ];
       const fontFamily = fontFamilies[difficulty];
-      const colorPallete = isWon ? ["#022f2e", "#05df72"] : ["#4f1a1a", "red"];
-      const fontColor = isWon ? "#e5e5e5" : "#d6d3d1";
+      const colorPallete = isWon ? ["white", "#05df72"] : ["#4f1a1a", "red"];
+      const fontColor = isWon ? "#e5e5e5" : "hsl(0, 0%, 80%)";
 
       for (let i = 0; i < count; i++) {
         if (initialized.current) break;
@@ -91,10 +91,10 @@ export const EndScreen = () => {
   );
 
   return (
-    <div className="flex flex-col gap-[10vh] w-full h-full">
+    <div className="w-full h-full">
       <div
         ref={scope}
-        className="bg-linear-to-r from-transparent via-black/5 to-transparent w-11/12 h-4/12 lg:h-6/12 mx-auto transform-3d relative">
+        className="w-11/12 h-4/12 lg:h-6/12 mx-auto transform-3d relative">
         <p className="text select-none last:select-text capitalize text-[20vw] md:text-[10vw] font-bold absolute top-6/12 left-6/12">
           {content}
         </p>
@@ -102,8 +102,18 @@ export const EndScreen = () => {
       <div className="flex justify-center items-start grow">
         <button
           onClick={restart}
-          className="text-white capitalize text-3xl cursor-pointer">
-          play again
+          className="text-white btn font-semibold uppercase md:text-xl xl:text-2xl cursor-pointer relative w-96 py-6 xl:py-8">
+          Restart
+          <div className="btn-border overflow-clip">
+            <div className="top main-border"></div>
+            <div className="bottom main-border"></div>
+            <div className="left main-border"></div>
+            <div className="right main-border"></div>
+            <div className="top-left side-border"></div>
+            <div className="top-right side-border"></div>
+            <div className="bottom-left side-border"></div>
+            <div className="bottom-right side-border"></div>
+          </div>
         </button>
       </div>
     </div>
