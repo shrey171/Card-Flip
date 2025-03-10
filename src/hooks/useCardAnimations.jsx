@@ -9,9 +9,11 @@ export const useCardAnimations = ({ scope }) => {
   const { contextSafe } = useGSAP(
     () => {
       gsap.set(scope.current, { transformPerspective: 600 });
-      gsap.set(".front", { rotationY: 180, filter: "brightness(0.9) grayscale(0)" });
+      gsap.set(".front", {
+        rotationY: 180,
+        filter: "brightness(0.9) grayscale(0)",
+      });
       gsap.set(".back", { filter: "brightness(1)" });
-      let target, duration, x, y;
 
       // Card hover timeline
       liftCardTl.current = gsap
@@ -20,13 +22,13 @@ export const useCardAnimations = ({ scope }) => {
         .to(".back", { filter: "brightness(.85)", duration: 0.15 }, "<");
 
       // Discard animation timeline
-      target = scope.current;
-      duration = 0.7;
+      const target = scope.current;
+      const duration = 0.7;
       const upDuration = 0.3;
       const rangeX = Math.max(window.innerWidth / 3, 300);
       const rangeY = window.innerHeight / 3;
-      x = Power2.easeOut(Math.random()) * rangeX;
-      y = gsap.utils.random(-200, -rangeY);
+      let x = Power2.easeOut(Math.random()) * rangeX;
+      const y = gsap.utils.random(-200, -rangeY);
       const reversedRotation = Math.random() < 0.5;
       const reversedX = Math.random() < 0.5;
       if (reversedX) x = -x;
@@ -59,6 +61,7 @@ export const useCardAnimations = ({ scope }) => {
       scope.current && gsap.to(scope.current, { rotationY, duration: 0.4 })
   );
 
+  // animate cards upon lose
   const gameLose = contextSafe(() => {
     gsap.to(scope.current, {
       rotationY: -180,
@@ -67,7 +70,7 @@ export const useCardAnimations = ({ scope }) => {
       overwrite: true,
       duration: 0.3,
     });
-    gsap.to(".back", { opacity: 0, duration: 0.1 });    
+    gsap.to(".back", { opacity: 0, duration: 0.1 });
     gsap.to(".front", {
       filter: "brightness(.5) grayscale(1)",
       overwrite: true,

@@ -2,7 +2,6 @@
 @import "tailwindcss";
 
 body {
-  --columns: repeat(1fr, 26);
   --pattern: url('/assets/images/bg2.png');
   background-image: var(--pattern);
 }
@@ -15,20 +14,14 @@ body {
       rgba(0, 255, 186, 1) 100%);
 }
 
-.card {
-  min-width: var(--cell-min-width);
-  max-height: var(--cell-max-height);
-}
-
-.image-container {
-  color: #000 !important;
-  /* bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-[#f9f9f9] via-[#bcbab8] to-[#9d8f8f] */
+/* .image-container {
+  color: #000;
   background-image: conic-gradient(at 0% 0%, #f9f9f9 0%, #bcbab8 50%, #9d8f8f 100%);
 }
 
 .difficulty-card:hover .image-container {
   background-image: radial-gradient(circle at center, #f9f9f9, #bcbab8, #9d8f8f);
-}
+} */
 
 .casual {
   .difficulty-image {
@@ -171,7 +164,6 @@ body {
   }
 
   .top {
-    /* translate: calc(100% - var(--hover-length)) 0; */
     left: var(--hover-length);
     translate: -100% 0;
   }
@@ -194,22 +186,4 @@ body {
   .side-border {
     translate: 0;
   }
-}
-
-@theme {
-  --color-rebeccapurple: #663399;
-  --color-main: #390b77;
-  --timer-gradient: linear-gradient(90deg,
-      rgba(255, 66, 66, 1) 0%,
-      rgba(255, 147, 0, 1) 35%,
-      rgba(255, 250, 3, 1) 70%,
-      rgba(0, 255, 186, 1) 100%)
-}
-
-@utility flipped {
-  display: none;
-}
-
-@utility selected {
-  background: conic-gradient(at bottom left, #382933, #3b5249, #519872);
 }
